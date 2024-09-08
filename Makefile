@@ -26,17 +26,15 @@ ifeq ($(BUILD_COVERAGE),1)
 	LDFLAGS+=--coverage
 endif
 
-ifeq ($(PLATFORM),Darwin)
-    CXX=clang++
-    CXXFLAGS+=-arch x86_64 -cl-mad-enable
-else
-ifeq ($(CXX),clang++)
-    CXXFLAGS+=-arch x86_64 -cl-mad-enable
-else
+
+   
+    # CXX=clang++
+    CXXFLAGS+=-arch arm64 
+
     CXX=g++
-    CXXFLAGS+=-march=x86-64 -fgcse-sm
-endif
-endif
+    CXXFLAGS+=-march=native
+
+
 
 # CUDA variables
 CUDA_HOME=/usr/local/cuda
